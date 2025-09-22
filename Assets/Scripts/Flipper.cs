@@ -1,12 +1,13 @@
+using NUnit.Framework;
 using UnityEngine;
 public class Flipper : MonoBehaviour
 {
+    private float force = 2000f;
     public bool invertRotation = false;
-    public float upForce = 100f;
-    public float downForce = 40f;
 
     Rigidbody2D rb;
     HingeJoint2D joint;
+    JointMotor2D motor;
 
     private void Start()
     {
@@ -19,21 +20,21 @@ public class Flipper : MonoBehaviour
             -transform.localPosition.y / transform.localScale.y
         );
 
-        Debug.Log(anchorPos);
         joint.anchor = anchorPos;
     }
 
     private void Update()
     {
+        motor = joint.motor;
         int r = invertRotation ? -1 : 1;
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
-            rb.AddForce(transform.up * upForce * r, ForceMode2D.Impulse);
+            motor.motorSpeed = r * force;
         }
         else
         {
-            rb.AddForce(transform.up * -downForce * r, ForceMode2D.Force);
+            motor.motorSpeed = -r * force;
         }
+        joint.motor = motor;
     }
 }
