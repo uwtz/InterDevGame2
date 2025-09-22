@@ -12,6 +12,7 @@ public class DeathBoxManager : MonoBehaviour
         if (col.gameObject.tag == "Ball")
         {
             Destroy(col.gameObject);
+            gm.currentBall = null;
             gm.ToLaunchState();
         }
     }

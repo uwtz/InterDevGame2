@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public Ball currentBall;
 
+    [SerializeField] PlayStateTriggerHelper playStateTriggerHelper;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -42,7 +44,13 @@ public class GameManager : MonoBehaviour
     public void ToLaunchState()
     {
         state = GameState.launch;
-        currentBall = Instantiate(ballPrefab, ballSpawnPoint).GetComponent<Ball>();
+        playStateTriggerHelper.ResetHelper();
+
+        if (currentBall == null)
+        {
+            currentBall = Instantiate(ballPrefab, ballSpawnPoint).GetComponent<Ball>();
+        }
+
     }
 
     public void ToPlayState()

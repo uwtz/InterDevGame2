@@ -2,7 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 public class Flipper : MonoBehaviour
 {
-    private float force = 2000f;
+    private float force = 30f;
     public bool invertRotation = false;
 
     Rigidbody2D rb;
@@ -19,22 +19,33 @@ public class Flipper : MonoBehaviour
             -transform.localPosition.x / transform.localScale.x,
             -transform.localPosition.y / transform.localScale.y
         );
-
         joint.anchor = anchorPos;
     }
 
     private void Update()
     {
+
+        int r = invertRotation ? -1 : 1;
+        if (Input.GetKey(KeyCode.Z))
+        {
+            rb.AddForce(transform.up * force * r, ForceMode2D.Impulse);
+        }
+        else
+        {
+            rb.AddForce(transform.up * force * -r, ForceMode2D.Force);
+        }
+        /*
         motor = joint.motor;
         int r = invertRotation ? -1 : 1;
         if (Input.GetKey(KeyCode.Space))
         {
-            motor.motorSpeed = r * force;
+            motor.motorSpeed = r * spd;
         }
         else
         {
-            motor.motorSpeed = -r * force;
+            motor.motorSpeed = -r * spd;
         }
         joint.motor = motor;
+        */
     }
 }
