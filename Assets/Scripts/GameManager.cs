@@ -30,8 +30,20 @@ public class GameManager : MonoBehaviour
         ToLaunchState();
     }
 
+
+    float topspd = 0f;
     private void Update()
     {
+        if (currentBall != null)
+        {
+            float spd = Mathf.Abs(currentBall.rb.linearVelocity.magnitude);
+            if (spd >topspd)
+            {
+                topspd = spd;
+                Debug.Log(topspd);
+            }
+
+        }
         switch (state)
         {
             case GameState.launch:

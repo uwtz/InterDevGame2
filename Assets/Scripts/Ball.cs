@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     float gravityNormal = 10f;
     float gravityExpand = 3f;
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     private void Start()
     {

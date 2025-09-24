@@ -2,12 +2,11 @@ using NUnit.Framework;
 using UnityEngine;
 public class Flipper : MonoBehaviour
 {
-    private float force = 30f;
+    private float force = 200f;
     public bool invertRotation = false;
 
     Rigidbody2D rb;
     HingeJoint2D joint;
-    JointMotor2D motor;
 
     private void Start()
     {

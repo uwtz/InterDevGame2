@@ -5,7 +5,7 @@ public class PlayStateTriggerHelper : MonoBehaviour
     BoxCollider2D bc;
     SpriteRenderer sr;
 
-    private void Start()
+    private void Awake()
     {
         bc = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -23,6 +23,7 @@ public class PlayStateTriggerHelper : MonoBehaviour
 
     public void ResetHelper()
     {
+        
         bc.isTrigger = true;
         sr.enabled = false;
     }
