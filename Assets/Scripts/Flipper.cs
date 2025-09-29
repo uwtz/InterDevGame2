@@ -2,7 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 public class Flipper : MonoBehaviour
 {
-    private float force = 200f;
+    private float force = 150f;
     public bool invertRotation = false;
 
     Rigidbody2D rb;
@@ -18,7 +18,7 @@ public class Flipper : MonoBehaviour
             -transform.localPosition.x / transform.localScale.x,
             -transform.localPosition.y / transform.localScale.y
         );
-        joint.anchor = anchorPos;
+        //joint.anchor = anchorPos;
     }
 
     private void Update()

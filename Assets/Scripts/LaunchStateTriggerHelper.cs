@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LaunchStateTriggerHelper : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.tag == "Ball")
         {

@@ -5,10 +5,15 @@ public class Ball : MonoBehaviour
     enum BallState { normal, expand };
     BallState state = BallState.normal;
 
+    /*
     float scaleNormal = .3f;
     float scaleExpand = .6f;
     float gravityNormal = 10f;
-    float gravityExpand = 3f;
+    float gravityExpand = 3f;*/
+    float scaleNormal = 1f;
+    float scaleExpand = 2f;
+    float gravityNormal = 4f;
+    float gravityExpand = 1.5f;
 
     public Rigidbody2D rb;
 

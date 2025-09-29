@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
             if (spd >topspd)
             {
                 topspd = spd;
-                Debug.Log(topspd);
+                //Debug.Log(topspd);
             }
 
         }
