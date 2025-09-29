@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Clam : MonoBehaviour
 {
+    int point = 250;
     Rigidbody2D rb;
+    AudioSource audiosource;
 
     float coolDown = 1f;
     float timeLastOpened = 0f;
@@ -10,6 +12,7 @@ public class Clam : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audiosource = GetComponent<AudioSource>();
     }
 
     /*
@@ -30,8 +33,15 @@ public class Clam : MonoBehaviour
     {
         if (Time.time - timeLastOpened >= coolDown)
         {
+            GameManager.Instance.AddPoint(point);
             timeLastOpened = Time.time;
             rb.AddForce(transform.up * 100, ForceMode2D.Impulse);
+            audiosource.Play();
         }
+    }
+
+    private void Update()
+    {
+        rb.AddForce(transform.up * -1, ForceMode2D.Force);
     }
 }

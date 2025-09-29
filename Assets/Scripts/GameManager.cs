@@ -13,6 +13,20 @@ public class GameManager : MonoBehaviour
     public Ball currentBall;
 
     [SerializeField] PlayStateTriggerHelper playStateTriggerHelper;
+    [SerializeField] Bubble bubble;
+
+    [SerializeField] GameObject pointPopup;
+    [SerializeField] Canvas canvas;
+
+    public float topScore;
+    public float score;
+
+    public void AddPoint(int p)
+    {
+        score += p;
+        GameObject pText = Instantiate(pointPopup, currentBall.transform.position, Quaternion.identity, canvas.transform);
+        pText.GetComponent<Point>().SetText(p.ToString());
+    }
 
     private void Awake()
     {
@@ -31,9 +45,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-    float topspd = 0f;
+    //float topspd = 0f;
     private void Update()
     {
+        /*
         if (currentBall != null)
         {
             float spd = Mathf.Abs(currentBall.rb.linearVelocity.magnitude);
@@ -42,8 +57,9 @@ public class GameManager : MonoBehaviour
                 topspd = spd;
                 //Debug.Log(topspd);
             }
-
         }
+        */
+
         switch (state)
         {
             case GameState.launch:
@@ -57,10 +73,11 @@ public class GameManager : MonoBehaviour
     {
         state = GameState.launch;
         playStateTriggerHelper.ResetHelper();
+        bubble.ResetBubble();
 
         if (currentBall == null)
         {
-            currentBall = Instantiate(ballPrefab, ballSpawnPoint).GetComponent<Ball>();
+            currentBall = Instantiate(ballPrefab, ballSpawnPoint.transform.position, Quaternion.identity).GetComponent<Ball>();
         }
 
     }
@@ -68,5 +85,15 @@ public class GameManager : MonoBehaviour
     public void ToPlayState()
     {
         state = GameState.play;
+        UpdateScore();
+    }
+
+    private void UpdateScore()
+    {
+        if (score > topScore)
+        { topScore = score; }
+        score = 0;
     }
 }
+
+

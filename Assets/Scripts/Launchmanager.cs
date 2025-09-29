@@ -15,7 +15,7 @@ public class LaunchManager : MonoBehaviour
 
     [SerializeField] Transform MeterJoint;
     float minMeterRotation = 0f;
-    float maxMeterRotation = 180f;
+    float maxMeterRotation = 250f;
 
     private void Start()
     {
@@ -39,6 +39,7 @@ public class LaunchManager : MonoBehaviour
             gm.ToPlayState();
 
             bubbles.Play();
+            GetComponent<AudioSource>().Play();
         }
 
         if (isHolding) { holdTime += Time.deltaTime; }

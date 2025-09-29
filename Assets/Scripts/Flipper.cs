@@ -7,11 +7,13 @@ public class Flipper : MonoBehaviour
 
     Rigidbody2D rb;
     HingeJoint2D joint;
+    AudioSource audioSource;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         joint = GetComponent<HingeJoint2D>();
+        audioSource = GetComponent<AudioSource>();
 
         Vector2 anchorPos = new Vector2
         (
@@ -23,11 +25,18 @@ public class Flipper : MonoBehaviour
 
     private void Update()
     {
-
         int r = invertRotation ? -1 : 1;
-        if (Input.GetKey(KeyCode.Z))
+        if (GameManager.Instance.state == GameManager.GameState.play)
         {
-            rb.AddForce(transform.up * force * r, ForceMode2D.Impulse);
+            if (Input.GetKey(KeyCode.Z))
+            {
+                rb.AddForce(transform.up * force * r, ForceMode2D.Impulse);
+                if (hit) { audioSource.Play(); }
+            }
+            else
+            {
+                rb.AddForce(transform.up * force * -r, ForceMode2D.Force);
+            }
         }
         else
         {
@@ -46,5 +55,22 @@ public class Flipper : MonoBehaviour
         }
         joint.motor = motor;
         */
+    }
+
+    bool hit = false;
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Ball")
+        {
+            hit = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Ball")
+        {
+            hit = false;
+        }
     }
 }

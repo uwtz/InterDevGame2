@@ -29,14 +29,18 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.X))
+        if (GameManager.Instance.state == GameManager.GameState.play)
         {
-            state = BallState.expand;
+            if (Input.GetKey(KeyCode.X))
+            {
+                state = BallState.expand;
+            }
+            else
+            {
+                state = BallState.normal;
+            }
         }
-        else
-        {
-            state = BallState.normal;
-        }
+        else { state = BallState.normal; }
 
         switch (state)
         {
