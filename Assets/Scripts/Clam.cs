@@ -40,8 +40,8 @@ public class Clam : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        rb.AddForce(transform.up * -1, ForceMode2D.Force);
+        rb.AddForce(transform.up * -5f, ForceMode2D.Force);
     }
 }

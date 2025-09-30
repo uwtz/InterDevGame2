@@ -13659,7 +13659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c269906ea2892419886efc3be4e38fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 50
+  force: 75
 --- !u!212 &1044271978
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13723,8 +13723,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044271975}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.17364825, w: 0.9848078}
-  m_LocalPosition: {x: 6.22, y: -2.89, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.20108706, w: 0.9795734}
+  m_LocalPosition: {x: 6.31, y: -2.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13732,7 +13732,7 @@ Transform:
   - {fileID: 543671229}
   - {fileID: 1856540249}
   m_Father: {fileID: 1356822333}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -23.201}
 --- !u!82 &1044271980
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16320,7 +16320,7 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 10
+    m_LowerAngle: 0
     m_UpperAngle: 50
 --- !u!50 &1533181705
 Rigidbody2D:
@@ -17866,7 +17866,7 @@ HingeJoint2D:
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -50
-    m_UpperAngle: -10
+    m_UpperAngle: 0
 --- !u!50 &1942661689
 Rigidbody2D:
   serializedVersion: 5
